@@ -33,9 +33,6 @@ export class SupplierService {
 
   create(createSupplierDto: CreateSupplierDto): Promise<Supplier> {
     const supplier = this.supplierRepository.create(createSupplierDto);
-    // const supplier = this.supplierRepository.create({
-    //   ...createSupplierDto,
-    // });
     return this.supplierRepository.save(supplier);
   }
 

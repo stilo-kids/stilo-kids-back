@@ -3,8 +3,7 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
-  HttpStatus,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -51,14 +50,7 @@ export class SupplierController {
   })
   async findOne(@Param('id') id: string): Promise<SupplierDto> {
     const supplier: Supplier | null = await this.supplierService.findOne(+id);
-    if (!supplier)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: `Supplier with ID ${id} not found`,
-        },
-        HttpStatus.NOT_FOUND,
-      );
+    if (!supplier) throw new NotFoundException('Fornecedor não encontrado.');
     return new SupplierDto(supplier);
   }
 
@@ -72,14 +64,7 @@ export class SupplierController {
     @Body() updateSupplierDto: UpdateSupplierDto,
   ): Promise<SupplierDto> {
     const supplier: Supplier | null = await this.supplierService.findOne(+id);
-    if (!supplier)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: `Supplier with ID ${id} not found`,
-        },
-        HttpStatus.NOT_FOUND,
-      );
+    if (!supplier) throw new NotFoundException('Fornecedor não encontrado.');
     const updatedSupplier: Supplier = await this.supplierService.update(
       +id,
       updateSupplierDto,
@@ -91,14 +76,7 @@ export class SupplierController {
   @ApiOkResponse({ description: 'Fornecedor removido com sucesso.' })
   async remove(@Param('id') id: string): Promise<void> {
     const supplier: Supplier | null = await this.supplierService.findOne(+id);
-    if (!supplier)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: `Supplier with ID ${id} not found`,
-        },
-        HttpStatus.NOT_FOUND,
-      );
+    if (!supplier) throw new NotFoundException('Fornecedor não encontrado.');
     return await this.supplierService.remove(supplier);
   }
 }

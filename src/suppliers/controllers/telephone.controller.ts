@@ -3,7 +3,7 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -51,14 +51,7 @@ export class TelephoneController {
   async findOne(@Param('id') id: string): Promise<TelephoneDto> {
     const telephone: Telephone | null =
       await this.telephoneService.findOne(+id);
-    if (!telephone)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: 'Telefone não encontrado.',
-        },
-        404,
-      );
+    if (!telephone) throw new NotFoundException('Telefone não encontrado.');
     return new TelephoneDto(telephone);
   }
 
@@ -75,14 +68,7 @@ export class TelephoneController {
       +id,
       telephoneDto,
     );
-    if (!telephone)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: 'Telefone não encontrado.',
-        },
-        404,
-      );
+    if (!telephone) throw new NotFoundException('Telefone não encontrado.');
     return new TelephoneDto(telephone);
   }
 
@@ -93,14 +79,7 @@ export class TelephoneController {
   async remove(@Param('id') id: string): Promise<void> {
     const telephone: Telephone | null =
       await this.telephoneService.findOne(+id);
-    if (!telephone)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: 'Telefone não encontrado.',
-        },
-        404,
-      );
+    if (!telephone) throw new NotFoundException('Telefone não encontrado.');
     await this.telephoneService.remove(telephone);
   }
 }

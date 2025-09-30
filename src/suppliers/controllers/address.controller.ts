@@ -3,7 +3,7 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -49,14 +49,7 @@ export class AddressController {
   })
   async findOne(@Param('id') id: string): Promise<AddressDto> {
     const address: Address | null = await this.addressService.findOne(+id);
-    if (!address)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: 'Endereço não encontrado.',
-        },
-        404,
-      );
+    if (!address) throw new NotFoundException('Endereço não encontrado.');
     return new AddressDto(address);
   }
 
@@ -82,15 +75,7 @@ export class AddressController {
   })
   async remove(@Param('id') id: string): Promise<void> {
     const address: Address | null = await this.addressService.findOne(+id);
-    if (!address)
-      throw new HttpException(
-        {
-          type: 'error',
-          message: 'Endereço não encontrado.',
-        },
-        404,
-      );
-
+    if (!address) throw new NotFoundException('Endereço não encontrado.');
     return await this.addressService.remove(address);
   }
 }
