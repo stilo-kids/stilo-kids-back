@@ -23,9 +23,9 @@ export class Supplier {
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @OneToMany(() => Address, (address) => address.supplier)
+  @OneToMany(() => Address, (address) => address.supplier, { cascade: true, eager: true })
   addresses: Address[];
 
-  @OneToMany(() => Telephone, (telephone) => telephone.supplier)
+  @OneToMany(() => Telephone, (telephone) => telephone.supplier, { cascade: true, eager: true })
   telephones: Telephone[];
 }
