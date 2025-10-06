@@ -32,6 +32,7 @@ Links das documentações essenciais para o desenvolvimento do projeto.
 - <a href="https://docs.nestjs.com/first-steps">Overview</a>
 - <a href="https://docs.nestjs.com/openapi/introduction">OpenAPI</a>
 - <a href="https://docs.nestjs.com/fundamentals/testing">Testes</a>
+- <a href="https://github.com/typestack/class-validator">Validação</a>
 
 ## TypeORM
 
