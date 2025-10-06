@@ -12,6 +12,7 @@ export class TelephoneService {
   constructor(
     @InjectRepository(Telephone)
     private readonly telephoneRepository: Repository<Telephone>,
+    @InjectRepository(Supplier)
     private readonly supplierService: SupplierService,
   ) {}
 
