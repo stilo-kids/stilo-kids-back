@@ -1,10 +1,19 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ValidateNested } from 'class-validator';
+import { IsNotEmpty, IsString, Length, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { CreateSupplierTelephoneDto } from './create.supplier.telephone.dto';
 import { CreateSupplierAddressDto } from './create.supplier.address.dto';
 
 export default class CreateSupplierDto {
+  @IsString({
+    message: 'O nome do fornecedor deve ser um texto.',
+  })
+  @IsNotEmpty({
+    message: 'O nome do fornecedor não pode estar vazio.',
+  })
+  @Length(3, 200, {
+    message: 'O nome do fornecedor deve ter entre 3 e 200 caracteres.',
+  })
   @ApiProperty({
     description: 'Nome do Fornecedor',
     required: true,
