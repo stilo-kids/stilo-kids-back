@@ -23,9 +23,9 @@ export class Supplier {
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @OneToMany(() => Address, (address) => address.supplier, { cascade: true, eager: true })
+  @OneToMany(() => Address, (address) => address.supplier, { cascade: ['insert', 'soft-remove'] })
   addresses: Address[];
 
-  @OneToMany(() => Telephone, (telephone) => telephone.supplier, { cascade: true, eager: true })
+  @OneToMany(() => Telephone, (telephone) => telephone.supplier, { cascade: ['insert', 'soft-remove'] })
   telephones: Telephone[];
 }
