@@ -54,7 +54,7 @@ export class AddressService {
     updateAddressDto: UpdateAddressDto,
   ): Promise<Address> {
     const supplier: Supplier | null = await this.supplierService.findOne(
-      updateAddressDto.supplierId,
+      updateAddressDto.supplierId ?? 0,
     );
     if (!supplier) throw new Error('Supplier not found');
 
