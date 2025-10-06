@@ -48,7 +48,7 @@ export class TelephoneService {
     updateTelephoneDto: UpdateTelephoneDto,
   ): Promise<Telephone> {
     const supplier: Supplier | null = await this.supplierService.findOne(
-      updateTelephoneDto.supplierId,
+      updateTelephoneDto.supplierId ?? 0,
     );
     if (!supplier) throw new Error('Supplier not found');
 
