@@ -8,6 +8,8 @@ const npmCmd = os.platform() === 'win32' ? 'npm.cmd' : 'npm';
 
 const [,, command, ...args] = process.argv;
 
+const typeormPath = 'dist/config/typeorm.config.js'
+
 if (!command) {
   console.error('Erro: nenhum comando fornecido.');
   process.exit(1);
@@ -22,11 +24,11 @@ function runCommand(cmdArgs) {
 
 switch(command) {
   case 'migration:run':
-    runCommand(['migration:run', '-d', 'src/config/typeorm.config.ts']);
+    runCommand(['migration:run', '-d', typeormPath]);
     break;
 
   case 'migration:revert':
-    runCommand(['migration:revert', '-d', 'src/config/typeorm.config.ts']);
+    runCommand(['migration:revert', '-d', typeormPath]);
     break;
 
   case 'migration:create':
@@ -42,7 +44,7 @@ switch(command) {
       console.error('Erro: migration:generate requer o nome da migration.');
       process.exit(1);
     }
-    runCommand(['migration:generate', `src/migrations/${args[0]}`, '-d', 'src/config/typeorm.config.ts']);
+    runCommand(['migration:generate', `src/migrations/${args[0]}`, '-d', typeormPath]);
     break;
 
   case 'entity:create':

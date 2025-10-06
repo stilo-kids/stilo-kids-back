@@ -51,6 +51,20 @@ O ORM utilizado nessa aplicação é o TypeORM, abaixo estão links para leitura
 
 ## Comandos
 
+### Docker
+
+Para iniciar o projeto, use o comando:
+
+```shell
+docker compose up --build
+```
+
+Para executar os comandos de rodar migração, reverter ou gerar e surtir efeito no container, primeiro entre no shell do container:
+
+```shell
+docker exec -it nestjs-api sh
+```
+
 ### Comandos longos
 
 Para criar uma entidade, utilize o comando abaixo:

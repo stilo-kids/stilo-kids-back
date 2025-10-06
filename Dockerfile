@@ -41,4 +41,12 @@ ENV NODE_ENV=production
 EXPOSE 3000
 
 # Comando de inicialização
+# CMD ["node", "dist/main.js"]
+# COPY entrypoint.sh /usr/src/app/entrypoint.sh
+COPY helper.js /usr/src/app/helper.js
+# COPY src/config/typeorm.config.ts /usr/src/app/typeorm.config.ts
+
+# RUN chmod +x /usr/src/app/entrypoint.sh
+
+# CMD ["sh", "/usr/src/app/entrypoint.sh"]
 CMD ["node", "dist/main.js"]
