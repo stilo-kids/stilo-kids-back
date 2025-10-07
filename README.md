@@ -65,6 +65,20 @@ Para executar os comandos de rodar migração, reverter ou gerar e surtir efeito
 docker exec -it nestjs-api sh
 ```
 
+### Testes
+
+Testar todos os módulos:
+
+```shell
+npm test
+```
+
+Testar um arquivo específco:
+
+```shell
+npm test -- -- testPathPatterns=<arquivo de testes>
+```
+
 ### Comandos longos
 
 Para criar uma entidade, utilize o comando abaixo:
