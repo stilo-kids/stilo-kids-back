@@ -53,7 +53,6 @@ export class SupplierService {
 
     if (!supplier) throw new Error('Supplier not found');
 
-    console.log(updateSupplierDto);
     if (updateSupplierDto.addresses !== undefined) {
       await this.addressRepository.softRemove(supplier.addresses);
       supplier.addresses = [];
