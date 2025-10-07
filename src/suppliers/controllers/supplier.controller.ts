@@ -14,16 +14,12 @@ import CreateSupplierDto from '../dto/create.supplier.dto';
 import SupplierDto from '../dto/supplier.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import UpdateSupplierDto from '../dto/update.supplier.dto';
-import { AddressService } from '../services/address.service';
-import { TelephoneService } from '../services/telephone.service';
 
 @ApiTags('Fornecedores')
 @Controller('suppliers')
 export class SupplierController {
   constructor(
     private readonly supplierService: SupplierService,
-    private readonly addressService: AddressService,
-    private readonly telephoneService: TelephoneService,
   ) {}
 
   @Get()
