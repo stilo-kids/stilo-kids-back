@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SupplierModule } from './suppliers/supplier.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './products/product.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ConfigModule } from '@nestjs/config';
       migrations: [__dirname + '/migrations/*{.ts,.js}'],
     }),
     SupplierModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
